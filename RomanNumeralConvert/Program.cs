@@ -21,7 +21,7 @@ namespace ConsoleUIs
         {
             string romanNumeral = GetInput();
 
-            int num = ConvertToNum(romanNumeral);
+            int num = ConvertRomanNumeralToInt(romanNumeral);
 
             Console.WriteLine(num);
 
@@ -29,12 +29,12 @@ namespace ConsoleUIs
 
         public static string GetInput()
         {
-            Console.WriteLine("What Roman Numeral you would like to convert to a number: ");
+            Console.WriteLine("What Roman Numeral would you like to convert to a number: ");
             string romanNumeral = Console.ReadLine();
             return romanNumeral;
         }
 
-        private static int ConvertToNum(string romanNumeral)
+        private static int ConvertRomanNumeralToInt(string romanNumeral)
         {
             int num = 0;
             foreach (char c in romanNumeral.ToUpper())
@@ -44,17 +44,14 @@ namespace ConsoleUIs
             }
 
             if (romanNumeral.Contains("IV") || romanNumeral.Contains("IX"))
-            {
                 num -= 2;
-            }
+
             if (romanNumeral.Contains("XL") || romanNumeral.Contains("XC"))
-            {
                 num -= 20;
-            }
+            
             if (romanNumeral.Contains("CD") || romanNumeral.Contains("CM"))
-            {
                 num -= 200;
-            }
+            
             return num;
         }
     }
